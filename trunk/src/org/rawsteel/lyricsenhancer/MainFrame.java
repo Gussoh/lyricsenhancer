@@ -180,12 +180,19 @@ public class MainFrame extends javax.swing.JFrame {
         ScrollPane pane = new ScrollPane();
         pane.add(newLyrics);
         
-        tabPane.addTab(firstLine, newLyrics);
+        tabPane.addTab(firstLine, pane);
         tabPane.setTabComponentAt(tabPane.getTabCount() - 1, new ButtonTabComponent(tabPane));
     }//GEN-LAST:event_enhanceButtonActionPerformed
 
     private String replace(String subject) {
+        if (subject.length() < 1) {
+            return subject;
+        }
+        
+        subject = subject.toLowerCase();
+        
         return "apa";
+        
     }
     
     /**
