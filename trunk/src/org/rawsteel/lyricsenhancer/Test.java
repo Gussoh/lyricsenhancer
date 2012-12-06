@@ -32,7 +32,7 @@ import java.util.regex.Pattern;
  */
 public class Test {
     public static void main(String[] args) throws Exception {
-        String xmlFile = "data/Dictionary.sv.xml";
+        String xmlFile = "data/Christmas.sv.xml";
         String songDir = "songs/christmas swedish/";
     
         MatchDictionary dictionary = new MatchDictionary("sv");

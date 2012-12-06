@@ -21,8 +21,6 @@ import java.util.logging.Logger;
  * @author eklann
  */
 public class MatchDictionary {
-    private String language;
-    
     private WordClassifier classifier;
     
     private HashMap<String, Integer> wordSyllables;
@@ -31,9 +29,7 @@ public class MatchDictionary {
     private HashMap<Integer, TreeSet<String>> classWords;
     
     public MatchDictionary(String language) {
-        this.language = language;
-        
-        classifier = new WordClassifier();
+        classifier = new WordClassifier(language);
         
         wordSyllables = new HashMap<>();
         wordClasses = new HashMap<>();
@@ -93,7 +89,7 @@ public class MatchDictionary {
         if (wordClasses.containsKey(word)) {
             return wordClasses.get(word);
         } else {
-            TreeSet<Integer> classes = classifier.getWordClasses(word, language);
+            TreeSet<Integer> classes = classifier.getWordClasses(word);
             
             //Add to forward map
             wordClasses.put(word, classes);

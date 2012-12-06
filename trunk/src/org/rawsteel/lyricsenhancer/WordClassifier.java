@@ -32,8 +32,10 @@ import java.util.regex.Pattern;
 public class WordClassifier {
     public static HashSet<Character> vowels;
     
-    public WordClassifier() {
-        vowels = new HashSet<Character>();
+    private String language;
+    
+    static {
+        vowels = new HashSet<>();
          
         vowels.add('a');
         vowels.add('e');
@@ -44,7 +46,11 @@ public class WordClassifier {
         vowels.add('å');
         vowels.add('ä');
         vowels.add('ö');
-        vowels.add('a');    
+        vowels.add('a');   
+    }
+    
+    public WordClassifier(String language) {
+        this.language = language;
     }
     
     public int CountSyllables(String word) {
@@ -67,14 +73,14 @@ public class WordClassifier {
         }
         
         //remove e & es, it's _usually? silent
-        if (word.endsWith("es") || word.endsWith("e")) {
+        if (language.equals("en") && (word.endsWith("es") || word.endsWith("e"))) {
             numVowels--;
         }
 
         return numVowels;
     }
     
-    public TreeSet<Integer> getWordClasses(String word, String language) {
+    public TreeSet<Integer> getWordClasses(String word) {
         TreeSet<Integer> classes = new TreeSet<Integer>();
         
         String url = String.format("http://api-demo.tyda.se/interface/xcall?rid=350001&v=2&c=xsearch_word,%s,%s,10,fixed,word_expanded", word, language);
