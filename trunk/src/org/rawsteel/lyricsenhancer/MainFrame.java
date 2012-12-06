@@ -4,6 +4,12 @@
  */
 package org.rawsteel.lyricsenhancer;
 
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Gussoh
@@ -27,46 +33,51 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         substitutionMode = new javax.swing.ButtonGroup();
-        jButton1 = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        enhanceButton = new javax.swing.JButton();
+        tabPane = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         originalLyrics = new javax.swing.JTextArea();
-        jSlider1 = new javax.swing.JSlider();
+        amount = new javax.swing.JSlider();
         jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        christmasSwedish = new javax.swing.JRadioButton();
+        disneySwedish = new javax.swing.JRadioButton();
+        christmasEnglish = new javax.swing.JRadioButton();
+        disneyEnglish = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Enhance");
+        enhanceButton.setText("Enhance");
+        enhanceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enhanceButtonActionPerformed(evt);
+            }
+        });
 
         originalLyrics.setColumns(20);
         originalLyrics.setRows(5);
         jScrollPane2.setViewportView(originalLyrics);
 
-        jTabbedPane1.addTab("Original Lyrics", jScrollPane2);
+        tabPane.addTab("Original Lyrics", jScrollPane2);
 
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setValue(20);
-        jSlider1.setBorder(javax.swing.BorderFactory.createTitledBorder("Amount of words to replace"));
+        amount.setPaintLabels(true);
+        amount.setPaintTicks(true);
+        amount.setValue(20);
+        amount.setBorder(javax.swing.BorderFactory.createTitledBorder("Amount of words to replace"));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
 
-        substitutionMode.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Christmas (Swedish)");
+        substitutionMode.add(christmasSwedish);
+        christmasSwedish.setSelected(true);
+        christmasSwedish.setText("Christmas (Swedish)");
 
-        substitutionMode.add(jRadioButton2);
-        jRadioButton2.setText("Disney (Swedish)");
+        substitutionMode.add(disneySwedish);
+        disneySwedish.setText("Disney (Swedish)");
 
-        substitutionMode.add(jRadioButton3);
-        jRadioButton3.setText("Christmas (English)");
+        substitutionMode.add(christmasEnglish);
+        christmasEnglish.setText("Christmas (English)");
 
-        substitutionMode.add(jRadioButton4);
-        jRadioButton4.setText("Disney (English)");
+        substitutionMode.add(disneyEnglish);
+        disneyEnglish.setText("Disney (English)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,22 +86,22 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton4))
+                    .addComponent(christmasEnglish)
+                    .addComponent(christmasSwedish)
+                    .addComponent(disneySwedish)
+                    .addComponent(disneyEnglish))
                 .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jRadioButton1)
+                .addComponent(christmasSwedish)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(christmasEnglish)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(disneySwedish)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton4))
+                .addComponent(disneyEnglish))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,32 +111,69 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(tabPane)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(amount, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                            .addComponent(enhanceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(enhanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void enhanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enhanceButtonActionPerformed
+        String text = originalLyrics.getText();
+        if (text.length() < 1) {
+            JOptionPane.showMessageDialog(this, "No lyrics :(");
+            return;
+        }
+        HashMap<String, String> replacedWords = new HashMap<String, String>();
+        String firstLine = null;
+        StringBuilder newText = new StringBuilder();
+        String[] lines = text.split("\n");
+        for (String line : lines) {
+            if (firstLine == null) {
+                firstLine = line;
+            }
+            String[] words = line.split("\\s+");
+            for (String word : words) {
+                if (replacedWords.containsValue(word) || Math.random() * 100 < amount.getValue()) {
+                    String newWord = replace(word);
+                    System.out.println("Replacing " + word + " with " + newWord);
+                    replacedWords.put(word, newWord);
+                    newText.append(newWord);
+                } else {
+                    newText.append(word);
+                }
+            }
+            newText.append(' ');
+        }
+        newText.append('\n');
+        
+        JTextArea newLyrics = new JTextArea(newText.toString());
+        tabPane.addTab(firstLine, newLyrics);
+    }//GEN-LAST:event_enhanceButtonActionPerformed
+
+    private String replace(String subject) {
+        return "apa";
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -136,20 +184,20 @@ public class MainFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            // Set System L&F
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } 
+        catch (UnsupportedLookAndFeelException e) {
+           // handle exception
+        }
+        catch (ClassNotFoundException e) {
+           // handle exception
+        }
+        catch (InstantiationException e) {
+           // handle exception
+        }
+        catch (IllegalAccessException e) {
+           // handle exception
         }
         //</editor-fold>
 
@@ -161,16 +209,16 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JSlider amount;
+    private javax.swing.JRadioButton christmasEnglish;
+    private javax.swing.JRadioButton christmasSwedish;
+    private javax.swing.JRadioButton disneyEnglish;
+    private javax.swing.JRadioButton disneySwedish;
+    private javax.swing.JButton enhanceButton;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea originalLyrics;
     private javax.swing.ButtonGroup substitutionMode;
+    private javax.swing.JTabbedPane tabPane;
     // End of variables declaration//GEN-END:variables
 }
