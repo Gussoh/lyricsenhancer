@@ -32,10 +32,10 @@ import java.util.regex.Pattern;
  */
 public class Test {
     public static void main(String[] args) throws Exception {
-        String xmlFile = "data/Christmas.sv.xml";
-        String songDir = "songs/christmas swedish/";
+        String xmlFile = "data/Christmas.en.xml";
+        String songDir = "songs/christmas english/";
     
-        MatchDictionary dictionary = new MatchDictionary("sv");
+        MatchDictionary dictionary = new MatchDictionary("en");
         
         if (new File(xmlFile).exists()) {
             dictionary = MatchDictionary.loadFromFile(xmlFile);
