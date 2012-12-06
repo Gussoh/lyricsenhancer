@@ -24,14 +24,21 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    private static final String database = "data/Christmas.sv.xml";
-    MatchDictionary dictionary;
+    private static final String christmasSv = "data/Christmas.sv.xml";
+    private static final String christmasEn = "data/Christmas.en.xml";
+    private static final String disneySv = "data/Disney.sv.xml";
+    private static final String disneyEn = "data/Disney.en.xml";
+    
+    MatchDictionary dictionaryChristmasSv, dictionaryChristmasEn, dictionaryDisneySv, dictionaryDisneyEn;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         
-        dictionary = MatchDictionary.loadFromFile(database);
+        dictionaryChristmasSv = MatchDictionary.loadFromFile(christmasSv);
+        dictionaryChristmasEn = MatchDictionary.loadFromFile(christmasEn);
+        dictionaryDisneySv = MatchDictionary.loadFromFile(disneySv);
+        dictionaryDisneyEn = MatchDictionary.loadFromFile(disneyEn);
         initComponents();
     }
 
@@ -55,10 +62,12 @@ public class MainFrame extends javax.swing.JFrame {
         disneySwedish = new javax.swing.JRadioButton();
         christmasEnglish = new javax.swing.JRadioButton();
         disneyEnglish = new javax.swing.JRadioButton();
+        replaceSame = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Lyrics Enhancer Gold!");
 
-        enhanceButton.setText("Enhance");
+        enhanceButton.setText("Enhance!");
         enhanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enhanceButtonActionPerformed(evt);
@@ -116,6 +125,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(disneyEnglish))
         );
 
+        replaceSame.setSelected(true);
+        replaceSame.setText("Findus does want this unchecked. Gussoh does want it checked. Yes Hello");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,21 +140,26 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(amount, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                            .addComponent(enhanceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(replaceSame)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(enhanceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(amount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(enhanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(replaceSame)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 47, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(enhanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -150,6 +167,15 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enhanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enhanceButtonActionPerformed
+        MatchDictionary dictionary = dictionaryChristmasEn;
+        if(christmasSwedish.isSelected()) {
+            dictionary = dictionaryChristmasSv;
+        } else if (disneyEnglish.isSelected()) {
+            dictionary = dictionaryChristmasEn;
+        } else if (disneySwedish.isSelected()) {
+            dictionary = dictionaryDisneySv;
+        }
+        
         String text = originalLyrics.getText();
         
         text = text.replaceAll(",", "");
@@ -178,12 +204,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
             String[] words = line.split("\\s+");
             for (String word : words) {
-                if (replacedWords.containsKey(word.replaceAll("[^A-Öa-ö]", "").toLowerCase())) {
+                if (replaceSame.isSelected() && replacedWords.containsKey(word.replaceAll("[^A-Öa-ö]", "").toLowerCase())) {
                     newText.append(replacedWords.get(word.replaceAll("[^A-Öa-ö]", "").toLowerCase()));
                 } else if (Math.random() * 100 < amount.getValue()) {
                     String newWord = "";
                     try {
-                        newWord = replace(word);
+                        newWord = replace(dictionary, word);
                     } catch (Exception e) {
                         System.out.println("error on word " + word + "; " + e);
                         e.printStackTrace();
@@ -205,10 +231,10 @@ public class MainFrame extends javax.swing.JFrame {
         tabPane.addTab(firstLine, pane);
         tabPane.setTabComponentAt(tabPane.getTabCount() - 1, new ButtonTabComponent(tabPane));
         
-        dictionary.saveToFile(database);
     }//GEN-LAST:event_enhanceButtonActionPerformed
 
-    private String replace(String subject) {
+    private String replace(MatchDictionary dictionary, String subject) {
+        
         if (subject.length() < 1) {
             return subject;
         }
@@ -279,6 +305,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea originalLyrics;
+    private javax.swing.JCheckBox replaceSame;
     private javax.swing.ButtonGroup substitutionMode;
     private javax.swing.JTabbedPane tabPane;
     // End of variables declaration//GEN-END:variables
