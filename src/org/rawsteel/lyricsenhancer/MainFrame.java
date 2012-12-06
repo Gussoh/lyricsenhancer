@@ -24,12 +24,14 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    private static final String database = "data/Christmas.sv.xml";
     MatchDictionary dictionary;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        dictionary = MatchDictionary.loadFromFile("data/Christmas.sv.xml");
+        
+        dictionary = MatchDictionary.loadFromFile(database);
         initComponents();
     }
 
@@ -176,7 +178,9 @@ public class MainFrame extends javax.swing.JFrame {
             }
             String[] words = line.split("\\s+");
             for (String word : words) {
-                if (replacedWords.containsValue(word) || Math.random() * 100 < amount.getValue()) {
+                if (replacedWords.containsKey(word.replaceAll("[^A-Öa-ö]", "").toLowerCase())) {
+                    newText.append(replacedWords.get(word.replaceAll("[^A-Öa-ö]", "").toLowerCase()));
+                } else if (Math.random() * 100 < amount.getValue()) {
                     String newWord = "";
                     try {
                         newWord = replace(word);
@@ -184,7 +188,7 @@ public class MainFrame extends javax.swing.JFrame {
                         System.out.println("error on word " + word + "; " + e);
                         e.printStackTrace();
                     }
-                    replacedWords.put(word, newWord);
+                    replacedWords.put(word.replaceAll("[^A-Öa-ö]", "").toLowerCase(), newWord);
                     newText.append(newWord);
                 } else {
                     newText.append(word);
@@ -200,6 +204,8 @@ public class MainFrame extends javax.swing.JFrame {
         
         tabPane.addTab(firstLine, pane);
         tabPane.setTabComponentAt(tabPane.getTabCount() - 1, new ButtonTabComponent(tabPane));
+        
+        dictionary.saveToFile(database);
     }//GEN-LAST:event_enhanceButtonActionPerformed
 
     private String replace(String subject) {
