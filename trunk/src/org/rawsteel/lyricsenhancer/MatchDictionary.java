@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,8 @@ import java.util.logging.Logger;
  * @author eklann
  */
 public class MatchDictionary {
+    private String language;
+    
     private WordClassifier classifier;
     
     private HashMap<String, Integer> wordSyllables;
@@ -27,7 +30,9 @@ public class MatchDictionary {
     private HashMap<Integer, TreeSet<String>> syllableWords;
     private HashMap<Integer, TreeSet<String>> classWords;
     
-    public MatchDictionary() {
+    public MatchDictionary(String language) {
+        this.language = language;
+        
         classifier = new WordClassifier();
         
         wordSyllables = new HashMap<>();
@@ -61,6 +66,8 @@ public class MatchDictionary {
     }
     
     public int getSyllables(String word) {
+        word = word.toLowerCase();
+        
         if (wordSyllables.containsKey(word)) {
             return wordSyllables.get(word);
         } else {
@@ -81,10 +88,12 @@ public class MatchDictionary {
     }
     
     public TreeSet<Integer> getClasses(String word) {
+        word = word.toLowerCase();
+                
         if (wordClasses.containsKey(word)) {
             return wordClasses.get(word);
         } else {
-            TreeSet<Integer> classes = classifier.getWordClasses(word);
+            TreeSet<Integer> classes = classifier.getWordClasses(word, language);
             
             //Add to forward map
             wordClasses.put(word, classes);
@@ -129,5 +138,13 @@ public class MatchDictionary {
         }
         
         return new TreeSet<String>();
+    }
+    
+    public Set<Integer> getSyllableKeys() {
+        return syllableWords.keySet();
+    }
+    
+    public Set<Integer> getClassKeys() {
+        return classWords.keySet();
     }
 }
