@@ -74,10 +74,10 @@ public class WordClassifier {
         return numVowels;
     }
     
-    public TreeSet<Integer> getWordClasses(String word) {
+    public TreeSet<Integer> getWordClasses(String word, String language) {
         TreeSet<Integer> classes = new TreeSet<Integer>();
         
-        String url = String.format("http://api-demo.tyda.se/interface/xcall?rid=350001&v=2&c=xsearch_word,%s,sv,10,fixed,word_expanded", word);
+        String url = String.format("http://api-demo.tyda.se/interface/xcall?rid=350001&v=2&c=xsearch_word,%s,%s,10,fixed,word_expanded", word, language);
         Scanner scanner = new Scanner(getWebpageAsString(url));
 
         while (scanner.hasNextLine()) {
