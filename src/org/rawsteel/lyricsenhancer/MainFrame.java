@@ -4,6 +4,8 @@
  */
 package org.rawsteel.lyricsenhancer;
 
+import java.awt.ScrollPane;
+import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -139,10 +141,18 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void enhanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enhanceButtonActionPerformed
         String text = originalLyrics.getText();
+        
+        text = text.replaceAll(",", "");
+        text = text.replaceAll("\\.", "");
+        text = text.replaceAll("!", "");
+        text = text.replaceAll("-", "");
+        text = text.trim();
+        
         if (text.length() < 1) {
             JOptionPane.showMessageDialog(this, "No lyrics :(");
             return;
         }
+        
         HashMap<String, String> replacedWords = new HashMap<String, String>();
         String firstLine = null;
         StringBuilder newText = new StringBuilder();
@@ -161,13 +171,17 @@ public class MainFrame extends javax.swing.JFrame {
                 } else {
                     newText.append(word);
                 }
+                newText.append(' ');
             }
-            newText.append(' ');
+            newText.append('\n');
         }
-        newText.append('\n');
         
         JTextArea newLyrics = new JTextArea(newText.toString());
+        ScrollPane pane = new ScrollPane();
+        pane.add(newLyrics);
+        
         tabPane.addTab(firstLine, newLyrics);
+        tabPane.setTabComponentAt(tabPane.getTabCount() - 1, new ButtonTabComponent(tabPane));
     }//GEN-LAST:event_enhanceButtonActionPerformed
 
     private String replace(String subject) {
