@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -73,8 +74,8 @@ public class WordClassifier {
         return numVowels;
     }
     
-    public List<Integer> getWordClasses(String word) {
-        List<Integer> classes = new ArrayList<Integer>();
+    public TreeSet<Integer> getWordClasses(String word) {
+        TreeSet<Integer> classes = new TreeSet<Integer>();
         
         String url = String.format("http://api-demo.tyda.se/interface/xcall?rid=350001&v=2&c=xsearch_word,%s,sv,10,fixed,word_expanded", word);
         Scanner scanner = new Scanner(getWebpageAsString(url));

@@ -9,7 +9,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,18 +21,18 @@ import java.util.regex.Pattern;
  */
 public class Test {
     public static void main(String[] args) throws Exception {
-        WordClassifier wc = new WordClassifier();
+        MatchDictionary dictionary = new MatchDictionary();
         
         String[] testStrings = new String[] {"test", "apa", "melon", "vatten", "leksakståg", "bajs", "avloppsbrunn"};
 
         for (String s : testStrings) {
-            System.out.println(String.format("Number of syllables in \"%s\": %d", s, wc.CountSyllables(s)));
-            System.out.println(String.format("Classes for word \"%s\": ", s));
-
-            List<Integer> wordClasses = wc.getWordClasses(s);
-            for (int i : wordClasses)
-                System.out.print(String.format("%d ", i));
-            System.out.println("");
+            dictionary.getSyllables(s);
+            dictionary.getClasses(s);
         }
+        
+        System.out.println("Words with 2 syllables: " + dictionary.getSyllableWords(2));
+        System.out.println("Words with classId 2: " + dictionary.getClassWords(2));
+        
+        dictionary.saveToFile("asd");
     }
 }
