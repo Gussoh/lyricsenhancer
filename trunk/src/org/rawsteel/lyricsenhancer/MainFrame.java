@@ -5,8 +5,14 @@
 package org.rawsteel.lyricsenhancer;
 
 import java.awt.ScrollPane;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Dictionary;
 import java.util.HashMap;
+import java.util.List;
+import java.util.TreeSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
@@ -18,10 +24,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    MatchDictionary dictionary;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
+        dictionary = MatchDictionary.loadFromFile("data/Christmas.sv.xml");
         initComponents();
     }
 
@@ -146,6 +154,8 @@ public class MainFrame extends javax.swing.JFrame {
         text = text.replaceAll("\\.", "");
         text = text.replaceAll("!", "");
         text = text.replaceAll("-", "");
+        text = text.replaceAll("'", "");
+        
         text = text.trim();
         
         if (text.length() < 1) {
@@ -157,15 +167,23 @@ public class MainFrame extends javax.swing.JFrame {
         String firstLine = null;
         StringBuilder newText = new StringBuilder();
         String[] lines = text.split("\n");
+        int lineNo = 1;
         for (String line : lines) {
+            System.out.println("Line = " + lineNo + " / " + lines.length);
+            lineNo++;
             if (firstLine == null) {
                 firstLine = line;
             }
             String[] words = line.split("\\s+");
             for (String word : words) {
                 if (replacedWords.containsValue(word) || Math.random() * 100 < amount.getValue()) {
-                    String newWord = replace(word);
-                    System.out.println("Replacing " + word + " with " + newWord);
+                    String newWord = "";
+                    try {
+                        newWord = replace(word);
+                    } catch (Exception e) {
+                        System.out.println("error on word " + word + "; " + e);
+                        e.printStackTrace();
+                    }
                     replacedWords.put(word, newWord);
                     newText.append(newWord);
                 } else {
@@ -189,10 +207,26 @@ public class MainFrame extends javax.swing.JFrame {
             return subject;
         }
         
+        subject = subject.replaceAll("[^A-Öa-ö]", "");
         subject = subject.toLowerCase();
         
-        return "apa";
+        int syllables = dictionary.getSyllables(subject);
+        if (syllables == 0) {
+            return subject;
+        }
         
+        TreeSet<Integer> classIds = dictionary.getClasses(subject);
+        List<Integer> classIdsList = new ArrayList<>(classIds);
+        Collections.shuffle(classIdsList);
+        for (int classId : classIdsList) {
+            TreeSet<String> syllableClassWords = dictionary.getSyllableClassWords(syllables, classId);
+            if (!syllableClassWords.isEmpty()) {
+                ArrayList<String> syllableClassWordsList = new ArrayList<>(syllableClassWords);
+                return syllableClassWordsList.get((int) (Math.random() * syllableClassWordsList.size()));
+            }
+        }
+        
+        return subject;
     }
     
     /**
