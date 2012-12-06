@@ -21,6 +21,8 @@ import java.util.logging.Logger;
  * @author eklann
  */
 public class MatchDictionary {
+    private String language = "sv";
+    
     private WordClassifier classifier;
     
     private HashMap<String, Integer> wordSyllables;
@@ -29,17 +31,25 @@ public class MatchDictionary {
     private HashMap<Integer, TreeSet<String>> classWords;
     
     public MatchDictionary(String language) {
+        init(language);
+    }
+    
+    public void init(String language) {
+        this.language = language;
+        
         classifier = new WordClassifier(language);
         
         wordSyllables = new HashMap<>();
         wordClasses = new HashMap<>();
         syllableWords = new HashMap<>();
-        classWords = new HashMap<>();
+        classWords = new HashMap<>();    
     }
     
     public static MatchDictionary loadFromFile(String filename) {
         XStream xstream = new XStream();
-        return (MatchDictionary)(xstream.fromXML(new File(filename)));
+        MatchDictionary dictionary = (MatchDictionary)(xstream.fromXML(new File(filename)));
+        dictionary.init(dictionary.language);
+        return dictionary;
     }
     
     public boolean saveToFile(String filename) {
