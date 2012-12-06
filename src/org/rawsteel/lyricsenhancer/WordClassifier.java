@@ -4,8 +4,25 @@
  */
 package org.rawsteel.lyricsenhancer;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -56,8 +73,43 @@ public class WordClassifier {
         return numVowels;
     }
     
-    public List<String> getWordClasses() {
-        return null;
+    public List<Integer> getWordClasses(String word) {
+        List<Integer> classes = new ArrayList<Integer>();
+        
+        String url = String.format("http://api-demo.tyda.se/interface/xcall?rid=350001&v=2&c=xsearch_word,%s,sv,10,fixed,word_expanded", word);
+        Scanner scanner = new Scanner(getWebpageAsString(url));
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line.startsWith("<class_reference>")) {
+                classes.add(Integer.parseInt(line.replaceAll("<class_reference>", "").replaceAll("</class_reference>", "")));
+            }
+        }
+        
+        return classes;
     }
-    Jaxb
+    
+    private String getWebpageAsString(String webpageUrl) {
+        try {
+            URL url = new URL(webpageUrl);
+            URLConnection con = url.openConnection();
+            Pattern p = Pattern.compile("text/html;\\s+charset=([^\\s]+)\\s*");
+            Matcher m = p.matcher(con.getContentType());
+            /* If Content-Type doesn't match this pre-conception, choose default and 
+             * hope for the best. */
+            String charset = m.matches() ? m.group(1) : "ISO-8859-1";
+            Reader r = new InputStreamReader(con.getInputStream(), charset);
+            StringBuilder buf = new StringBuilder();
+            while (true) {
+                int ch = r.read();
+                if (ch < 0)
+                    break;
+                buf.append((char) ch);
+            }
+            return buf.toString();
+        } catch (IOException ex) {
+            Logger.getLogger(WordClassifier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
 }
