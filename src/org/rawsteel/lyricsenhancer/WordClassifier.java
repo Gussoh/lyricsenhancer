@@ -76,7 +76,11 @@ public class WordClassifier {
         if (language.equals("en") && (word.endsWith("es") || word.endsWith("e"))) {
             numVowels--;
         }
-
+        
+        if (language.equals("en") && numVowels == 0 && word.length() > 0) {
+            numVowels = 1;
+        }
+        
         return numVowels;
     }
     
@@ -84,7 +88,12 @@ public class WordClassifier {
         TreeSet<Integer> classes = new TreeSet<Integer>();
         
         String url = String.format("http://api-demo.tyda.se/interface/xcall?rid=350001&v=2&c=xsearch_word,%s,%s,10,fixed,word_expanded", word, language);
-        Scanner scanner = new Scanner(getWebpageAsString(url));
+
+        String webpage = getWebpageAsString(url);
+        if (webpage.equals(""))
+            throw new NullPointerException();
+        
+        Scanner scanner = new Scanner(webpage);
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

@@ -217,6 +217,7 @@ public class MainFrame extends javax.swing.JFrame {
                     replacedWords.put(word.replaceAll("[^A-Öa-ö]", "").toLowerCase(), newWord);
                     newText.append(newWord);
                 } else {
+                    replacedWords.put(word.replaceAll("[^A-Öa-ö]", "").toLowerCase(), word.replaceAll("[^A-Öa-ö]", "").toLowerCase());
                     newText.append(word);
                 }
                 newText.append(' ');
