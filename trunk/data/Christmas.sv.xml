@@ -1,4 +1,5 @@
 <org.rawsteel.lyricsenhancer.MatchDictionary>
+  <language>sv</language>
   <classifier>
     <language>sv</language>
   </classifier>
@@ -192,11 +193,11 @@
       <int>2</int>
     </entry>
     <entry>
-      <string>e</string>
+      <string>spår</string>
       <int>1</int>
     </entry>
     <entry>
-      <string>spår</string>
+      <string>e</string>
       <int>1</int>
     </entry>
     <entry>
@@ -234,10 +235,6 @@
     <entry>
       <string>ren</string>
       <int>1</int>
-    </entry>
-    <entry>
-      <string>elva</string>
-      <int>2</int>
     </entry>
     <entry>
       <string>han</string>
@@ -376,10 +373,6 @@
       <int>2</int>
     </entry>
     <entry>
-      <string>näst</string>
-      <int>1</int>
-    </entry>
-    <entry>
       <string>kvällen</string>
       <int>2</int>
     </entry>
@@ -392,16 +385,8 @@
       <int>1</int>
     </entry>
     <entry>
-      <string>hitkomna</string>
-      <int>3</int>
-    </entry>
-    <entry>
       <string>hawaii</string>
       <int>2</int>
-    </entry>
-    <entry>
-      <string>härinne</string>
-      <int>3</int>
     </entry>
     <entry>
       <string>neder</string>
@@ -409,10 +394,6 @@
     </entry>
     <entry>
       <string>iväg</string>
-      <int>2</int>
-    </entry>
-    <entry>
-      <string>före</string>
       <int>2</int>
     </entry>
     <entry>
@@ -772,12 +753,12 @@
       <int>2</int>
     </entry>
     <entry>
-      <string>granen</string>
-      <int>2</int>
-    </entry>
-    <entry>
       <string>himlarna</string>
       <int>3</int>
+    </entry>
+    <entry>
+      <string>granen</string>
+      <int>2</int>
     </entry>
     <entry>
       <string>önskade</string>
@@ -805,10 +786,6 @@
     </entry>
     <entry>
       <string>rara</string>
-      <int>2</int>
-    </entry>
-    <entry>
-      <string>kvinna</string>
       <int>2</int>
     </entry>
     <entry>
@@ -866,10 +843,6 @@
     <entry>
       <string>tomtar</string>
       <int>2</int>
-    </entry>
-    <entry>
-      <string>husbonde</string>
-      <int>3</int>
     </entry>
     <entry>
       <string>gris</string>
@@ -1540,12 +1513,12 @@
       <int>4</int>
     </entry>
     <entry>
-      <string>tyska</string>
-      <int>2</int>
-    </entry>
-    <entry>
       <string>bland</string>
       <int>1</int>
+    </entry>
+    <entry>
+      <string>tyska</string>
+      <int>2</int>
     </entry>
     <entry>
       <string>bud</string>
@@ -1556,11 +1529,11 @@
       <int>2</int>
     </entry>
     <entry>
-      <string>grymt</string>
+      <string>långt</string>
       <int>1</int>
     </entry>
     <entry>
-      <string>långt</string>
+      <string>grymt</string>
       <int>1</int>
     </entry>
     <entry>
@@ -1629,10 +1602,6 @@
     </entry>
     <entry>
       <string>rider</string>
-      <int>2</int>
-    </entry>
-    <entry>
-      <string>nätter</string>
       <int>2</int>
     </entry>
     <entry>
@@ -2346,10 +2315,6 @@
     <entry>
       <string>förunderliga</string>
       <int>5</int>
-    </entry>
-    <entry>
-      <string>huset</string>
-      <int>2</int>
     </entry>
     <entry>
       <string>kom</string>
@@ -3072,16 +3037,12 @@
       <int>1</int>
     </entry>
     <entry>
-      <string>goder</string>
-      <int>2</int>
+      <string>igenom</string>
+      <int>3</int>
     </entry>
     <entry>
       <string>möter</string>
       <int>2</int>
-    </entry>
-    <entry>
-      <string>igenom</string>
-      <int>3</int>
     </entry>
     <entry>
       <string>åstad</string>
@@ -3096,12 +3057,12 @@
       <int>2</int>
     </entry>
     <entry>
-      <string>jubelår</string>
-      <int>3</int>
-    </entry>
-    <entry>
       <string>styr</string>
       <int>1</int>
+    </entry>
+    <entry>
+      <string>jubelår</string>
+      <int>3</int>
     </entry>
     <entry>
       <string>snälla</string>
@@ -3109,10 +3070,6 @@
     </entry>
     <entry>
       <string>kommen</string>
-      <int>2</int>
-    </entry>
-    <entry>
-      <string>både</string>
       <int>2</int>
     </entry>
     <entry>
@@ -3142,10 +3099,6 @@
     <entry>
       <string>räv</string>
       <int>1</int>
-    </entry>
-    <entry>
-      <string>lusse</string>
-      <int>2</int>
     </entry>
     <entry>
       <string>hoppet</string>
@@ -3528,10 +3481,6 @@
       <int>2</int>
     </entry>
     <entry>
-      <string>lelle</string>
-      <int>2</int>
-    </entry>
-    <entry>
       <string>folk</string>
       <int>1</int>
     </entry>
@@ -3891,16 +3840,16 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>e</string>
-      <sorted-set/>
-    </entry>
-    <entry>
       <string>spår</string>
       <sorted-set>
         <int>2</int>
         <int>3</int>
         <int>6</int>
       </sorted-set>
+    </entry>
+    <entry>
+      <string>e</string>
+      <sorted-set/>
     </entry>
     <entry>
       <string>bli</string>
@@ -3964,14 +3913,6 @@
         <int>2</int>
         <int>13</int>
         <int>70</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>elva</string>
-      <sorted-set>
-        <int>2</int>
-        <int>42</int>
-        <int>44</int>
       </sorted-set>
     </entry>
     <entry>
@@ -4251,12 +4192,6 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>näst</string>
-      <sorted-set>
-        <int>19</int>
-      </sorted-set>
-    </entry>
-    <entry>
       <string>kvällen</string>
       <sorted-set>
         <int>51</int>
@@ -4280,20 +4215,9 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>hitkomna</string>
-      <sorted-set/>
-    </entry>
-    <entry>
       <string>hawaii</string>
       <sorted-set>
         <int>32</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>härinne</string>
-      <sorted-set>
-        <int>28</int>
-        <int>44</int>
       </sorted-set>
     </entry>
     <entry>
@@ -4306,16 +4230,6 @@
       <string>iväg</string>
       <sorted-set>
         <int>19</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>före</string>
-      <sorted-set>
-        <int>2</int>
-        <int>13</int>
-        <int>19</int>
-        <int>21</int>
-        <int>27</int>
       </sorted-set>
     </entry>
     <entry>
@@ -4960,15 +4874,15 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>granen</string>
-      <sorted-set>
-        <int>51</int>
-      </sorted-set>
-    </entry>
-    <entry>
       <string>himlarna</string>
       <sorted-set>
         <int>52</int>
+      </sorted-set>
+    </entry>
+    <entry>
+      <string>granen</string>
+      <sorted-set>
+        <int>51</int>
       </sorted-set>
     </entry>
     <entry>
@@ -5023,12 +4937,6 @@
         <int>66</int>
         <int>67</int>
         <int>68</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>kvinna</string>
-      <sorted-set>
-        <int>2</int>
       </sorted-set>
     </entry>
     <entry>
@@ -5141,12 +5049,6 @@
       <string>tomtar</string>
       <sorted-set>
         <int>3</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>husbonde</string>
-      <sorted-set>
-        <int>2</int>
       </sorted-set>
     </entry>
     <entry>
@@ -6360,20 +6262,20 @@
       <sorted-set/>
     </entry>
     <entry>
+      <string>bland</string>
+      <sorted-set>
+        <int>19</int>
+        <int>27</int>
+        <int>44</int>
+      </sorted-set>
+    </entry>
+    <entry>
       <string>tyska</string>
       <sorted-set>
         <int>2</int>
         <int>66</int>
         <int>67</int>
         <int>68</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>bland</string>
-      <sorted-set>
-        <int>19</int>
-        <int>27</int>
-        <int>44</int>
       </sorted-set>
     </entry>
     <entry>
@@ -6390,18 +6292,18 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>grymt</string>
+      <string>långt</string>
       <sorted-set>
-        <int>2</int>
-        <int>3</int>
+        <int>13</int>
         <int>19</int>
         <int>69</int>
       </sorted-set>
     </entry>
     <entry>
-      <string>långt</string>
+      <string>grymt</string>
       <sorted-set>
-        <int>13</int>
+        <int>2</int>
+        <int>3</int>
         <int>19</int>
         <int>69</int>
       </sorted-set>
@@ -6531,12 +6433,6 @@
       <string>rider</string>
       <sorted-set>
         <int>6</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>nätter</string>
-      <sorted-set>
-        <int>3</int>
       </sorted-set>
     </entry>
     <entry>
@@ -7839,12 +7735,6 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>huset</string>
-      <sorted-set>
-        <int>51</int>
-      </sorted-set>
-    </entry>
-    <entry>
       <string>kom</string>
       <sorted-set>
         <int>7</int>
@@ -7905,7 +7795,11 @@
     </entry>
     <entry>
       <string>selen</string>
-      <sorted-set/>
+      <sorted-set>
+        <int>2</int>
+        <int>3</int>
+        <int>51</int>
+      </sorted-set>
     </entry>
     <entry>
       <string>pastejer</string>
@@ -8547,7 +8441,9 @@
     </entry>
     <entry>
       <string>vrårna</string>
-      <sorted-set/>
+      <sorted-set>
+        <int>52</int>
+      </sorted-set>
     </entry>
     <entry>
       <string>vaktande</string>
@@ -8964,7 +8860,11 @@
     </entry>
     <entry>
       <string>stör</string>
-      <sorted-set/>
+      <sorted-set>
+        <int>2</int>
+        <int>6</int>
+        <int>57</int>
+      </sorted-set>
     </entry>
     <entry>
       <string>frälsarn</string>
@@ -9127,20 +9027,16 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>goder</string>
-      <sorted-set/>
+      <string>igenom</string>
+      <sorted-set>
+        <int>19</int>
+        <int>36</int>
+      </sorted-set>
     </entry>
     <entry>
       <string>möter</string>
       <sorted-set>
         <int>6</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>igenom</string>
-      <sorted-set>
-        <int>19</int>
-        <int>36</int>
       </sorted-set>
     </entry>
     <entry>
@@ -9164,17 +9060,17 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>jubelår</string>
-      <sorted-set>
-        <int>2</int>
-      </sorted-set>
-    </entry>
-    <entry>
       <string>styr</string>
       <sorted-set>
         <int>2</int>
         <int>6</int>
         <int>57</int>
+      </sorted-set>
+    </entry>
+    <entry>
+      <string>jubelår</string>
+      <sorted-set>
+        <int>2</int>
       </sorted-set>
     </entry>
     <entry>
@@ -9190,14 +9086,6 @@
       <string>kommen</string>
       <sorted-set>
         <int>64</int>
-      </sorted-set>
-    </entry>
-    <entry>
-      <string>både</string>
-      <sorted-set>
-        <int>29</int>
-        <int>35</int>
-        <int>44</int>
       </sorted-set>
     </entry>
     <entry>
@@ -9241,10 +9129,6 @@
       <sorted-set>
         <int>2</int>
       </sorted-set>
-    </entry>
-    <entry>
-      <string>lusse</string>
-      <sorted-set/>
     </entry>
     <entry>
       <string>hoppet</string>
@@ -9990,10 +9874,6 @@
       </sorted-set>
     </entry>
     <entry>
-      <string>lelle</string>
-      <sorted-set/>
-    </entry>
-    <entry>
       <string>folk</string>
       <sorted-set>
         <int>2</int>
@@ -10248,7 +10128,6 @@
         <string>ny</string>
         <string>nytt</string>
         <string>när</string>
-        <string>näst</string>
         <string>nätt</string>
         <string>nå</string>
         <string>nån</string>
@@ -10430,7 +10309,6 @@
         <string>brinner</string>
         <string>broder</string>
         <string>brytit</string>
-        <string>både</string>
         <string>bågar</string>
         <string>böjer</string>
         <string>börjat</string>
@@ -10453,7 +10331,6 @@
         <string>eder</string>
         <string>efter</string>
         <string>egen</string>
-        <string>elva</string>
         <string>endå</string>
         <string>falla</string>
         <string>fallar</string>
@@ -10485,7 +10362,6 @@
         <string>föda</string>
         <string>följa</string>
         <string>fönster</string>
-        <string>före</string>
         <string>förlät</string>
         <string>förlåt</string>
         <string>förstå</string>
@@ -10499,7 +10375,6 @@
         <string>glädjen</string>
         <string>glädjens</string>
         <string>glömmer</string>
-        <string>goder</string>
         <string>goodbye</string>
         <string>grader</string>
         <string>granar</string>
@@ -10540,7 +10415,6 @@
         <string>hoppet</string>
         <string>hoppets</string>
         <string>husen</string>
-        <string>huset</string>
         <string>hälsa</string>
         <string>hälsning</string>
         <string>händer</string>
@@ -10582,14 +10456,12 @@
         <string>krossat</string>
         <string>krypa</string>
         <string>kulor</string>
-        <string>kvinna</string>
         <string>kvällen</string>
         <string>kyligt</string>
         <string>kärlek</string>
         <string>köpte</string>
         <string>leder</string>
         <string>lekar</string>
-        <string>lelle</string>
         <string>lider</string>
         <string>ligger</string>
         <string>lika</string>
@@ -10605,7 +10477,6 @@
         <string>lova</string>
         <string>lucia</string>
         <string>lugna</string>
-        <string>lusse</string>
         <string>lyftes</string>
         <string>lysa</string>
         <string>lyser</string>
@@ -10646,7 +10517,6 @@
         <string>norden</string>
         <string>näpet</string>
         <string>nära</string>
-        <string>nätter</string>
         <string>omkring</string>
         <string>orden</string>
         <string>ordning</string>
@@ -10860,10 +10730,7 @@
         <string>himlarna</string>
         <string>himmelen</string>
         <string>himmelens</string>
-        <string>hitkomna</string>
         <string>hosianna</string>
-        <string>husbonde</string>
-        <string>härinne</string>
         <string>höstarna</string>
         <string>igenom</string>
         <string>jubelår</string>
@@ -11004,7 +10871,6 @@
         <string>då</string>
         <string>efter</string>
         <string>eld</string>
-        <string>elva</string>
         <string>en</string>
         <string>fall</string>
         <string>familj</string>
@@ -11037,7 +10903,6 @@
         <string>föda</string>
         <string>fönster</string>
         <string>för</string>
-        <string>före</string>
         <string>förlåt</string>
         <string>ge</string>
         <string>genom</string>
@@ -11071,7 +10936,6 @@
         <string>hopp</string>
         <string>hosianna</string>
         <string>hus</string>
-        <string>husbonde</string>
         <string>hälsa</string>
         <string>hälsning</string>
         <string>här</string>
@@ -11103,7 +10967,6 @@
         <string>kotlett</string>
         <string>kristus</string>
         <string>kropp</string>
-        <string>kvinna</string>
         <string>kväll</string>
         <string>kärlek</string>
         <string>kör</string>
@@ -11175,6 +11038,7 @@
         <string>sak</string>
         <string>sedan</string>
         <string>sekund</string>
+        <string>selen</string>
         <string>selleri</string>
         <string>sen</string>
         <string>show</string>
@@ -11212,6 +11076,7 @@
         <string>stund</string>
         <string>styr</string>
         <string>ställa</string>
+        <string>stör</string>
         <string>suckan</string>
         <string>sus</string>
         <string>svar</string>
@@ -11341,7 +11206,6 @@
         <string>människor</string>
         <string>namn</string>
         <string>nej</string>
-        <string>nätter</string>
         <string>om</string>
         <string>ord</string>
         <string>paket</string>
@@ -11351,6 +11215,7 @@
         <string>rullar</string>
         <string>rum</string>
         <string>röster</string>
+        <string>selen</string>
         <string>själv</string>
         <string>skal</string>
         <string>skall</string>
@@ -11564,6 +11429,7 @@
         <string>strålar</string>
         <string>styr</string>
         <string>står</string>
+        <string>stör</string>
         <string>svingar</string>
         <string>sänker</string>
         <string>talar</string>
@@ -11686,7 +11552,6 @@
         <string>föda</string>
         <string>född</string>
         <string>för</string>
-        <string>före</string>
         <string>ge</string>
         <string>glatt</string>
         <string>glimmande</string>
@@ -11879,7 +11744,6 @@
         <string>framme</string>
         <string>från</string>
         <string>för</string>
-        <string>före</string>
         <string>genom</string>
         <string>glatt</string>
         <string>gnistrande</string>
@@ -11934,7 +11798,6 @@
         <string>näpet</string>
         <string>när</string>
         <string>nära</string>
-        <string>näst</string>
         <string>nätt</string>
         <string>ock</string>
         <string>om</string>
@@ -11993,7 +11856,6 @@
       <sorted-set>
         <string>aldrig</string>
         <string>framför</string>
-        <string>före</string>
         <string>hela</string>
         <string>här</string>
         <string>mer</string>
@@ -12036,7 +11898,6 @@
         <string>framför</string>
         <string>från</string>
         <string>för</string>
-        <string>före</string>
         <string>genom</string>
         <string>hos</string>
         <string>hur</string>
@@ -12082,7 +11943,6 @@
       <sorted-set>
         <string>att</string>
         <string>bara</string>
-        <string>både</string>
         <string>för</string>
         <string>innan</string>
         <string>inte</string>
@@ -12109,7 +11969,6 @@
         <string>genom</string>
         <string>hela</string>
         <string>här</string>
-        <string>härinne</string>
         <string>ingen</string>
         <string>innan</string>
         <string>mot</string>
@@ -12141,12 +12000,6 @@
       <sorted-set>
         <string>som</string>
         <string>vilket</string>
-      </sorted-set>
-    </entry>
-    <entry>
-      <int>35</int>
-      <sorted-set>
-        <string>både</string>
       </sorted-set>
     </entry>
     <entry>
@@ -12270,7 +12123,6 @@
       <int>42</int>
       <sorted-set>
         <string>andra</string>
-        <string>elva</string>
         <string>en</string>
         <string>ett</string>
         <string>fem</string>
@@ -12364,21 +12216,18 @@
       <int>44</int>
       <sorted-set>
         <string>bland</string>
-        <string>både</string>
         <string>de</string>
         <string>det</string>
         <string>detta</string>
         <string>din</string>
         <string>du</string>
         <string>eder</string>
-        <string>elva</string>
         <string>ett</string>
         <string>framme</string>
         <string>genom</string>
         <string>han</string>
         <string>hej</string>
         <string>hon</string>
-        <string>härinne</string>
         <string>invid</string>
         <string>jaja</string>
         <string>man</string>
@@ -12429,7 +12278,6 @@
         <string>herren</string>
         <string>himlen</string>
         <string>hoppet</string>
-        <string>huset</string>
         <string>höjden</string>
         <string>isen</string>
         <string>jorden</string>
@@ -12452,6 +12300,7 @@
         <string>rumpan</string>
         <string>rutan</string>
         <string>rymden</string>
+        <string>selen</string>
         <string>sidan</string>
         <string>skaran</string>
         <string>skinkan</string>
@@ -12505,6 +12354,7 @@
         <string>stjärnorna</string>
         <string>tomtarna</string>
         <string>tårna</string>
+        <string>vrårna</string>
       </sorted-set>
     </entry>
     <entry>
@@ -12595,6 +12445,7 @@
         <string>stuva</string>
         <string>styr</string>
         <string>stå</string>
+        <string>stör</string>
         <string>sylta</string>
         <string>säg</string>
         <string>sänd</string>

@@ -31,18 +31,18 @@ public class MatchDictionary {
     private HashMap<Integer, TreeSet<String>> classWords;
     
     public MatchDictionary(String language) {
+        wordSyllables = new HashMap<>();
+        wordClasses = new HashMap<>();
+        syllableWords = new HashMap<>();
+        classWords = new HashMap<>();  
+        
         init(language);
     }
     
     public void init(String language) {
         this.language = language;
         
-        classifier = new WordClassifier(language);
-        
-        wordSyllables = new HashMap<>();
-        wordClasses = new HashMap<>();
-        syllableWords = new HashMap<>();
-        classWords = new HashMap<>();    
+        classifier = new WordClassifier(language);  
     }
     
     public static MatchDictionary loadFromFile(String filename) {
@@ -99,20 +99,25 @@ public class MatchDictionary {
         if (wordClasses.containsKey(word)) {
             return wordClasses.get(word);
         } else {
-            TreeSet<Integer> classes = classifier.getWordClasses(word);
-            
-            //Add to forward map
-            wordClasses.put(word, classes);
-            
-            //Add to reverse map
-            for (int c : classes) {
-                if (!classWords.containsKey(c)) {
-                    classWords.put(c, new TreeSet<String>());
+            try {
+                TreeSet<Integer> classes = classifier.getWordClasses(word);
+
+                //Add to forward map
+                wordClasses.put(word, classes);
+
+                //Add to reverse map
+                for (int c : classes) {
+                    if (!classWords.containsKey(c)) {
+                        classWords.put(c, new TreeSet<String>());
+                    }
+                    classWords.get(c).add(word);
                 }
-                classWords.get(c).add(word);
+
+                return classes;
+            } catch (NullPointerException e) {
+                return new TreeSet<Integer>();
             }
             
-            return classes;
         }
     }
     
