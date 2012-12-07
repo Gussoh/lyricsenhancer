@@ -109,6 +109,11 @@ public class WordClassifier {
         try {
             URL url = new URL(webpageUrl);
             URLConnection con = url.openConnection();
+            
+            //con.setRequestProperty("User-Agent", "curl/7.21.0 (i486-pc-linux-gnu) libcurl/7.21.0 OpenSSL/0.9.8o zlib/1.2.3.4 libidn/1.15 libssh2/1.2.6");
+            //con.setRequestProperty("Host", "api-demo.tyda.se");
+            //con.setRequestProperty("Accept", "*/*");
+            
             Pattern p = Pattern.compile("text/html;\\s+charset=([^\\s]+)\\s*");
             Matcher m = p.matcher(con.getContentType());
             /* If Content-Type doesn't match this pre-conception, choose default and 

@@ -37,6 +37,11 @@ public class Test {
         String xmlFile = "data/"+type+"."+lang+".xml";
         String songDir = "songs/"+type+"."+lang+"/";
     
+        if (args.length == 2) {
+            songDir = args[0];
+            xmlFile = args[1];
+        }
+        
         MatchDictionary dictionary = new MatchDictionary(lang);
         
         if (new File(xmlFile).exists()) {
