@@ -26,9 +26,9 @@ public class MatchDictionary {
     private WordClassifier classifier;
     
     private HashMap<String, Integer> wordSyllables;
-    private HashMap<String, TreeSet<Integer>> wordClasses;
+    private HashMap<String, TreeSet<String>> wordClasses;
     private HashMap<Integer, TreeSet<String>> syllableWords;
-    private HashMap<Integer, TreeSet<String>> classWords;
+    private HashMap<String, TreeSet<String>> classWords;
     
     public MatchDictionary(String language) {
         wordSyllables = new HashMap<>();
@@ -93,20 +93,20 @@ public class MatchDictionary {
         }
     }
     
-    public TreeSet<Integer> getClasses(String word) {
+    public TreeSet<String> getClasses(String word) {
         word = word.toLowerCase();
                 
         if (wordClasses.containsKey(word)) {
             return wordClasses.get(word);
         } else {
             try {
-                TreeSet<Integer> classes = classifier.getWordClasses(word);
+                TreeSet<String> classes = classifier.getWordClasses(word);
 
                 //Add to forward map
                 wordClasses.put(word, classes);
 
                 //Add to reverse map
-                for (int c : classes) {
+                for (String c : classes) {
                     if (!classWords.containsKey(c)) {
                         classWords.put(c, new TreeSet<String>());
                     }
@@ -115,7 +115,7 @@ public class MatchDictionary {
 
                 return classes;
             } catch (NullPointerException e) {
-                return new TreeSet<Integer>();
+                return new TreeSet<String>();
             }
             
         }
@@ -129,7 +129,7 @@ public class MatchDictionary {
         return new TreeSet<String>();
     }
     
-    public TreeSet<String> getClassWords(int classId) {
+    public TreeSet<String> getClassWords(String classId) {
         if (classWords.containsKey(classId)) {
             return classWords.get(classId);
         }
@@ -137,7 +137,7 @@ public class MatchDictionary {
         return new TreeSet<String>();
     }
     
-    public TreeSet<String> getSyllableClassWords(int nSyllables, int classId) {
+    public TreeSet<String> getSyllableClassWords(int nSyllables, String classId) {
         if (syllableWords.containsKey(nSyllables)) {
             if (classWords.containsKey(classId)) {
                 TreeSet<String> tmpSet = (TreeSet<String>)(syllableWords.get(nSyllables).clone());
@@ -155,7 +155,7 @@ public class MatchDictionary {
         return syllableWords.keySet();
     }
     
-    public Set<Integer> getClassKeys() {
+    public Set<String> getClassKeys() {
         return classWords.keySet();
     }
 }

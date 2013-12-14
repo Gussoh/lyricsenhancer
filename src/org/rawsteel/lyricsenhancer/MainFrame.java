@@ -248,10 +248,10 @@ public class MainFrame extends javax.swing.JFrame {
             return subject;
         }
         
-        TreeSet<Integer> classIds = dictionary.getClasses(subject);
-        List<Integer> classIdsList = new ArrayList<>(classIds);
+        TreeSet<String> classIds = dictionary.getClasses(subject);
+        List<String> classIdsList = new ArrayList<>(classIds);
         Collections.shuffle(classIdsList);
-        for (int classId : classIdsList) {
+        for (String classId : classIdsList) {
             TreeSet<String> syllableClassWords = dictionary.getSyllableClassWords(syllables, classId);
             if (!syllableClassWords.isEmpty()) {
                 ArrayList<String> syllableClassWordsList = new ArrayList<>(syllableClassWords);

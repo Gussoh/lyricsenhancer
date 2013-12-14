@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -83,7 +84,35 @@ public class WordClassifier {
         
         return numVowels;
     }
-    
+
+    public TreeSet<String> getWordClasses(String word) {
+        TreeSet<String> classes = new TreeSet<String>();
+        
+        try {
+            String url = String.format("http://tyda.se/search/%s", URLEncoder.encode(word));
+
+            String webpage = getWebpageAsString(url);
+            if (webpage.equals(""))
+                throw new NullPointerException();
+
+            Scanner scanner = new Scanner(webpage);
+            Pattern pattern = Pattern.compile("static\\/img\\/flagssmall\\/" + language + "\\.png\" alt=\"\"><\\/span> ([a-zA-Z]*)<\\/div>");
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                Matcher m = pattern.matcher(line);
+                if (m.find()) {
+                    classes.add(m.group(1));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return classes;    
+    }
+
+    /*
     public TreeSet<Integer> getWordClasses(String word) {
         TreeSet<Integer> classes = new TreeSet<Integer>();
         
@@ -104,6 +133,7 @@ public class WordClassifier {
         
         return classes;
     }
+    //*/
     
     private String getWebpageAsString(String webpageUrl) {
         try {
