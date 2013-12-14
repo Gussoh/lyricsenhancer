@@ -32,7 +32,13 @@ import java.util.regex.Pattern;
  */
 public class Test {
     public static void main(String[] args) throws Exception {
-        String type = "Disney";
+        /*
+        WordClassifier classifier = new WordClassifier("sv");
+        TreeSet<String> classes = classifier.getWordClasses("tedfgdst");
+        System.out.println(classes.toString());
+        //*/
+        //*
+        String type = "Christmas";
         String lang = "en";
         String xmlFile = "data/"+type+"."+lang+".xml";
         String songDir = "songs/"+type+"."+lang+"/";
@@ -65,11 +71,13 @@ public class Test {
         
         for (int key : dictionary.getSyllableKeys())
             System.out.println("Words with "+key+" syllables: " + dictionary.getSyllableWords(key));
-        
-        for (int key : dictionary.getClassKeys())
+        //*
+        for (String key : dictionary.getClassKeys())
             System.out.println("Words with classId "+key+": " + dictionary.getClassWords(key));
+        //*/
         
         dictionary.saveToFile(xmlFile);
+        //*/
     }
     
     private static HashSet<String> getWordsFromFile(String filename) throws FileNotFoundException {
