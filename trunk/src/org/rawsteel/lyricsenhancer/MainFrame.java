@@ -28,8 +28,9 @@ public class MainFrame extends javax.swing.JFrame {
     private static final String christmasEn = "data/Christmas.en.xml";
     private static final String disneySv = "data/Disney.sv.xml";
     private static final String disneyEn = "data/Disney.en.xml";
+    private static final String chalmersSv = "data/Chalmers.sv.xml";
     
-    MatchDictionary dictionaryChristmasSv, dictionaryChristmasEn, dictionaryDisneySv, dictionaryDisneyEn;
+    MatchDictionary dictionaryChristmasSv, dictionaryChristmasEn, dictionaryDisneySv, dictionaryDisneyEn, dictionaryChalmersSv;
     /**
      * Creates new form MainFrame
      */
@@ -39,6 +40,7 @@ public class MainFrame extends javax.swing.JFrame {
         dictionaryChristmasEn = MatchDictionary.loadFromFile(christmasEn);
         dictionaryDisneySv = MatchDictionary.loadFromFile(disneySv);
         dictionaryDisneyEn = MatchDictionary.loadFromFile(disneyEn);
+        dictionaryChalmersSv = MatchDictionary.loadFromFile(chalmersSv);
         initComponents();
     }
 
@@ -62,10 +64,11 @@ public class MainFrame extends javax.swing.JFrame {
         disneySwedish = new javax.swing.JRadioButton();
         christmasEnglish = new javax.swing.JRadioButton();
         disneyEnglish = new javax.swing.JRadioButton();
+        chalmersSwedish = new javax.swing.JRadioButton();
         replaceSame = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Lyrics Enhancer Gold!");
+        setTitle("Lyrics Enhancer Platinum!");
 
         enhanceButton.setText("Enhance!");
         enhanceButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +103,9 @@ public class MainFrame extends javax.swing.JFrame {
         substitutionMode.add(disneyEnglish);
         disneyEnglish.setText("Disney (English)");
 
+        substitutionMode.add(chalmersSwedish);
+        chalmersSwedish.setText("Chalmers (Svenska)");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,7 +116,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(christmasEnglish)
                     .addComponent(christmasSwedish)
                     .addComponent(disneySwedish)
-                    .addComponent(disneyEnglish))
+                    .addComponent(disneyEnglish)
+                    .addComponent(chalmersSwedish))
                 .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,8 +128,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(christmasEnglish)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(disneySwedish)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(disneyEnglish))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(disneyEnglish)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chalmersSwedish)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         replaceSame.setSelected(true);
@@ -150,16 +160,16 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(replaceSame)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 47, Short.MAX_VALUE)
+                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(enhanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(enhanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -174,6 +184,8 @@ public class MainFrame extends javax.swing.JFrame {
             dictionary = dictionaryChristmasEn;
         } else if (disneySwedish.isSelected()) {
             dictionary = dictionaryDisneySv;
+        } else if (chalmersSwedish.isSelected()) {
+            dictionary = dictionaryChalmersSv;
         }
         
         String text = originalLyrics.getText();
@@ -254,7 +266,7 @@ public class MainFrame extends javax.swing.JFrame {
         for (String classId : classIdsList) {
             TreeSet<String> syllableClassWords = dictionary.getSyllableClassWords(syllables, classId);
             if (!syllableClassWords.isEmpty()) {
-                ArrayList<String> syllableClassWordsList = new ArrayList<>(syllableClassWords);
+                ArrayList<String> syllableClassWordsList = new ArrayList<String>(syllableClassWords);
                 return syllableClassWordsList.get((int) (Math.random() * syllableClassWordsList.size()));
             }
         }
@@ -306,6 +318,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSlider amount;
+    private javax.swing.JRadioButton chalmersSwedish;
     private javax.swing.JRadioButton christmasEnglish;
     private javax.swing.JRadioButton christmasSwedish;
     private javax.swing.JRadioButton disneyEnglish;
